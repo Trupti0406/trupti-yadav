@@ -21,15 +21,12 @@ const ProjectCard = ({
     <motion.div
       variants={fadeIn("up", "spring", index * 0.5, 0.75)}
       initial="visible" // Ensures it's always visible
-      whileInView="show"
-      viewport={{ once: true, amount: 0.2 }} // Reduces animation delay
-    >
+      whileInView="show">
       <Tilt
         tiltMaxAngleX={10}
         tiltMaxAngleY={10}
         perspective={1000}
         transitionSpeed={500}
-        glareEnable={false} // Disable glare for better Safari compatibility
         className="bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full h-full">
         <noscript>
           <div className="text-white text-center">
