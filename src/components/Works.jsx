@@ -18,14 +18,25 @@ const ProjectCard = ({
   live_demo_link,
 }) => {
   return (
-    <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
+    <motion.div
+      variants={fadeIn("up", "spring", index * 0.5, 0.75)}
+      initial="visible" // Ensures it's always visible
+      whileInView="show"
+      viewport={{ once: true, amount: 0.2 }} // Reduces animation delay
+    >
       <Tilt
-        options={{
-          max: 45,
-          scale: 1,
-          speed: 450,
-        }}
+        tiltMaxAngleX={10}
+        tiltMaxAngleY={10}
+        perspective={1000}
+        transitionSpeed={500}
+        glareEnable={false} // Disable glare for better Safari compatibility
         className="bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full h-full">
+        <noscript>
+          <div className="text-white text-center">
+            Tilt effects not supported
+          </div>
+        </noscript>
+
         <div className="relative w-full h-[230px] overflow-hidden group">
           <img
             src={image}
@@ -87,7 +98,6 @@ const Works = () => {
           Here are some of the projects I have built
         </p>
         <h2 className={`${styles.sectionHeadText} text-center`}>Projects</h2>
-      
       </motion.div>
 
       <div className="mt-20 flex flex-wrap gap-7">
